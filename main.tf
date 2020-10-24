@@ -18,3 +18,20 @@ module "azurerm_resource_group" {
   rg_location = var.rg_location
   rg_tags = var.rg_tags
 }
+
+module "azurerm_app_service_plan" {
+  source = "./modules/app_service_plan"
+
+  app_service_plan_name = var.app_service_plan_name
+  app_service_plan_kind = var.app_service_plan_kind
+  app_service_plan_sku_tier = var.app_service_plan_sku_tier
+  app_service_plan_sku_size = var.app_service_plan_sku_size
+
+  app_service_name = var.app_service_name
+
+  # Dependencies
+  rg_location = module.azurerm_resource_group.rg_location
+  rg_name = module.azurerm_resource_group.rg_name
+
+  depends_on = [module.azurerm_resource_group]
+}
