@@ -25,4 +25,6 @@ resource "azurerm_app_service" "app_service_container" {
     linux_fx_version = "DOCKER|appsvcsample/static-site:latest"
     always_on        = "true"
   }
+
+  count = var.app_service_deploy
 }

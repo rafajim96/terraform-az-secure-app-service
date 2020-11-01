@@ -28,6 +28,7 @@ module "azurerm_app_service_plan" {
   app_service_plan_sku_size = var.app_service_plan_sku_size
 
   app_service_name = var.app_service_name
+  app_service_deploy = var.app_service_deploy != "" ? 1 : 0
 
   # Dependencies
   rg_location = module.azurerm_resource_group.rg_location

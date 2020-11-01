@@ -85,3 +85,9 @@ variable "app_service_name" {
   description = "Name of the App Service to be created."
   type = string
 }
+
+variable "app_service_deploy" {
+  description = "Variable to decide if the resource will be deployed."
+  type = string
+  default = ""
+}

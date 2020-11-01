@@ -46,6 +46,12 @@ variable "app_service_name" {
   type = string
 }
 
+variable "app_service_deploy" {
+  description = "Variable to decide if the resource will be deployed."
+  type = string
+  default = ""
+}
+
 # Dependencies ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 variable "rg_name" {
   description = "Name of the RG created as dependency."
