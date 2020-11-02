@@ -36,3 +36,21 @@ module "azurerm_app_service_plan" {
 
   depends_on = [module.azurerm_resource_group]
 }
+
+module "azurerm_sql_server" {
+  source = "./modules/sql_db"
+
+  sql_server_name = var.sql_server_name
+  sql_server_username = var.sql_server_username
+  sql_server_password = var.sql_server_password
+  sql_server_deploy = var.sql_server_deploy != "" ? 1 : 0
+
+  sql_db_name = var.sql_db_name
+  sql_db_edition = var.sql_db_edition
+  
+  # Dependencies
+  rg_location = module.azurerm_resource_group.rg_location
+  rg_name = module.azurerm_resource_group.rg_name
+
+  depends_on = [module.azurerm_resource_group]
+}
