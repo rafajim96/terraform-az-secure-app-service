@@ -61,3 +61,18 @@ module "azurerm_sql_server" {
 
   depends_on = [module.azurerm_resource_group, module.azurerm_app_service_plan]
 }
+
+module "azurerm_key_vault" {
+  source = "./modules/key_vault"
+
+  key_vault_name = var.key_vault_name
+  key_vault_sku  = var.key_vault_sku
+
+  # Dependencies
+  rg_location = module.azurerm_resource_group.rg_location
+  rg_name     = module.azurerm_resource_group.rg_name
+  subnet_id   = module.azurerm_app_service_plan.subnet_id
+  tenant_id   = var.tenant_id
+
+  depends_on = [module.azurerm_app_service_plan]
+}

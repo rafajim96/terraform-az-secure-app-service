@@ -55,7 +55,7 @@ resource "azurerm_subnet" "snet" {
     }
   }
 
-  service_endpoints = ["Microsoft.ContainerRegistry", "Microsoft.KeyVault", "Microsoft.SQL", "Microsoft.Storage"]
+  service_endpoints = ["Microsoft.ContainerRegistry", "Microsoft.KeyVault", "Microsoft.Sql", "Microsoft.Storage"]
 }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "vnet_integration" {

@@ -150,3 +150,15 @@ variable "subnet_address_prefixes" {
   description = "Address prefix to be used on Subnet creation."
   type        = string
 }
+
+# KEY VAULT RESOURCE VARIABLES --------------------------------------------------------------------------------------------------------------------------------------
+variable "key_vault_name" {
+  description = "Name for the Key Vault."
+  type        = string
+}
+
+variable "key_vault_sku" {
+  description = "SKU for the Key Vault."
+  type        = string
+  default     = "standard"
+}
