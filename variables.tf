@@ -196,3 +196,15 @@ variable "storage_account_deploy" {
   type        = string
   default     = ""
 }
+
+# CONTAINER REGISTRY RESOURCE VARIABLES --------------------------------------------------------------------------------------------------------------------------------------
+variable "container_registry_name" {
+  description = "Name for the Container Registry."
+  type        = string
+}
+
+variable "container_registry_deploy" {
+  description = "Variable to decide if the resource will be deployed."
+  type        = string
+  default     = ""
+}

@@ -92,3 +92,17 @@ module "azurerm_storage_account" {
 
   depends_on = [module.azurerm_app_service_plan]
 }
+
+module "azurerm_container_registry" {
+  source = "./modules/container_registry"
+
+  container_registry_name   = var.container_registry_name
+  container_registry_deploy = var.container_registry_deploy != "" ? 1 : 0
+
+  # Dependencies
+  rg_location = module.azurerm_resource_group.rg_location
+  rg_name     = module.azurerm_resource_group.rg_name
+  subnet_id   = module.azurerm_app_service_plan.subnet_id
+
+  depends_on = [module.azurerm_app_service_plan]
+}
