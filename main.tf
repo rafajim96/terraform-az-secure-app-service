@@ -76,3 +76,19 @@ module "azurerm_key_vault" {
 
   depends_on = [module.azurerm_app_service_plan]
 }
+
+module "azurerm_storage_account" {
+  source = "./modules/storage_account"
+
+  storage_account_name             = var.storage_account_name
+  storage_account_tier             = var.storage_account_tier
+  storage_account_replication_type = var.storage_account_replication_type
+  storage_account_deploy           = var.storage_account_deploy != "" ? 1 : 0
+
+  # Dependencies
+  rg_location = module.azurerm_resource_group.rg_location
+  rg_name     = module.azurerm_resource_group.rg_name
+  subnet_id   = module.azurerm_app_service_plan.subnet_id
+
+  depends_on = [module.azurerm_app_service_plan]
+}
